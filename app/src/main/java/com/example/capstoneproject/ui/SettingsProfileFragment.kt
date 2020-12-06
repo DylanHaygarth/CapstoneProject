@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -31,8 +32,12 @@ class SettingsProfileFragment : Fragment(R.layout.fragment_settings_profile) {
         observeProfile()
 
         btnConfirm.setOnClickListener {
-            onAddProfile()
-            findNavController().navigate(R.id.action_settingsProfileFragment_to_profileFragment)
+            if (validate()) {
+                onAddProfile()
+                findNavController().navigate(R.id.action_settingsProfileFragment_to_profileFragment)
+            } else {
+                Toast.makeText(context, getString(R.string.warning_fill_in_text), Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -101,5 +106,9 @@ class SettingsProfileFragment : Fragment(R.layout.fragment_settings_profile) {
         val goalTime = etGoalMonths.text.toString().toInt()
 
         viewModel.updateProfile(gender, age, height, weight, activityLevel, goalAction, goalWeight, goalTime)
+    }
+
+    private fun validate() : Boolean {
+        return etAge.text.isNotEmpty() && etHeight.text.isNotEmpty() && etWeight.text.isNotEmpty() && etGoalMonths.text.isNotEmpty() && etGoalWeight.text.isNotEmpty()
     }
 }

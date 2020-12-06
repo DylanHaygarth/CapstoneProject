@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/placeholder_450"
+                    app:srcCompat="@drawable/example_photo"
                     tools:ignore="ContentDescription" />
             </androidx.cardview.widget.CardView>
 
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/no_value_text"
+                android:text="Dylan Haygarth"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/cvImage"
@@ -55,52 +55,52 @@
             <TextView
                 android:id="@+id/tvAgeText"
                 style="@style/WhiteText"
-                android:layout_width="wrap_content"
+                android:layout_width="101dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="@string/age_text"
+                android:textAlignment="center"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/tvBMIText"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
             <TextView
                 android:id="@+id/tvBMIText"
                 style="@style/WhiteText"
-                android:layout_width="wrap_content"
+                android:layout_width="102dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="@string/BMI_text"
+                android:textAlignment="center"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/tvHeightText"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tvAgeText"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
             <TextView
                 android:id="@+id/tvHeightText"
                 style="@style/WhiteText"
-                android:layout_width="wrap_content"
+                android:layout_width="101dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="@string/height_text"
+                android:text="@string/height_cm_text"
+                android:textAlignment="center"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/tvWeightText"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tvBMIText"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
             <TextView
                 android:id="@+id/tvWeightText"
                 style="@style/WhiteText"
-                android:layout_width="wrap_content"
+                android:layout_width="102dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="@string/weight_text"
+                android:text="@string/weight_kg_text"
+                android:textAlignment="center"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tvHeightText"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
 

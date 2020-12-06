@@ -12,6 +12,9 @@ import com.example.capstoneproject.R
 import com.example.capstoneproject.model.Profile
 import com.example.capstoneproject.viewmodel.FitnessViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlin.math.pow
+import kotlin.math.roundToInt
+import kotlin.math.sqrt
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val viewModel: FitnessViewModel by viewModels()
@@ -42,10 +45,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         tvAge.text = profile.age.toString()
         tvHeight.text = profile.height.toString()
         tvWeight.text = profile.weight.toString()
+        tvBMI.text = calculateBMI(profile).toString()
     }
 
     // initializes standard settings for profile information
     private fun initProfile() {
         viewModel.insertProfile(Profile(Constants.GENDERS[0], 0, 0, 0, Constants.ACTIVITYOPTIONS[0], Constants.GOALOPTIONS[0], 0, 0))
+    }
+
+    private fun calculateBMI(profile: Profile) : Int {
+        val height = profile.height * 0.01
+        return (profile.weight / (height * height)).roundToInt()
+
     }
 }

@@ -21,6 +21,9 @@
     <string name="kg_text">kg</string>
     <string name="confirm_text">Confirm</string>
     <string name="no_value_text">No value</string>
+    <string name="warning_fill_in_text">Please fill in all the stats!</string>
+    <string name="height_cm_text">Height (cm)</string>
+    <string name="weight_kg_text">Weight (kg)</string>
 
 </resources>
 
