@@ -6,7 +6,7 @@
     app:startDestination="@id/profileFragment">
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.capstoneproject.ProfileFragment"
+        android:name="com.example.capstoneproject.ui.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsProfileFragment"
-        android:name="com.example.capstoneproject.SettingsProfileFragment"
+        android:name="com.example.capstoneproject.ui.SettingsProfileFragment"
         android:label="fragment_settings_profile"
         tools:layout="@layout/fragment_settings_profile" >
         <action

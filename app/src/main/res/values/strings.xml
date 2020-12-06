@@ -20,6 +20,7 @@
     <string name="cm_text">cm</string>
     <string name="kg_text">kg</string>
     <string name="confirm_text">Confirm</string>
+    <string name="no_value_text">No value</string>
 
 </resources>
 

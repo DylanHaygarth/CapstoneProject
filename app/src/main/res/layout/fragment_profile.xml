@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".ui.ProfileFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvProfile"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
+                android:text="@string/no_value_text"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/cvImage"
@@ -53,7 +53,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cvImage" />
 
             <TextView
-                android:id="@+id/tvGenderText"
+                android:id="@+id/tvAgeText"
                 style="@style/WhiteText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/tvHeightText"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/tvGenderText"
+                app:layout_constraintStart_toEndOf="@+id/tvAgeText"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
             <TextView
@@ -110,10 +110,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/tvGenderText"
-                app:layout_constraintEnd_toEndOf="@+id/tvGenderText"
-                app:layout_constraintStart_toStartOf="@+id/tvGenderText" />
+                android:text="@string/no_value_text"
+                app:layout_constraintBottom_toTopOf="@+id/tvAgeText"
+                app:layout_constraintEnd_toEndOf="@+id/tvAgeText"
+                app:layout_constraintStart_toStartOf="@+id/tvAgeText" />
 
             <TextView
                 android:id="@+id/tvBMI"
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="TextView"
+                android:text="@string/no_value_text"
                 app:layout_constraintBottom_toTopOf="@+id/tvBMIText"
                 app:layout_constraintEnd_toEndOf="@+id/tvBMIText"
                 app:layout_constraintStart_toStartOf="@+id/tvBMIText" />
@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="TextView"
+                android:text="@string/no_value_text"
                 app:layout_constraintBottom_toTopOf="@+id/tvHeightText"
                 app:layout_constraintEnd_toEndOf="@+id/tvHeightText"
                 app:layout_constraintStart_toStartOf="@+id/tvHeightText" />
@@ -143,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="TextView"
+                android:text="@string/no_value_text"
                 app:layout_constraintBottom_toTopOf="@+id/tvWeightText"
                 app:layout_constraintEnd_toEndOf="@+id/tvWeightText"
                 app:layout_constraintStart_toStartOf="@+id/tvWeightText" />
