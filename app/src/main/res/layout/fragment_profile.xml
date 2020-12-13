@@ -9,11 +9,11 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvProfile"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="375dp"
         app:cardBackgroundColor="#03A9F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -53,64 +53,79 @@
                 app:layout_constraintTop_toBottomOf="@+id/cvImage" />
 
             <TextView
+                android:id="@+id/tvStatsText"
+                style="@style/GreyBlackText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/stats_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+            <TextView
                 android:id="@+id/tvAgeText"
-                style="@style/WhiteText"
+                style="@style/GreyBlackText"
                 android:layout_width="101dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/age_text"
                 android:textAlignment="center"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/tvBMIText"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+                app:layout_constraintTop_toBottomOf="@+id/tvStatsText" />
 
             <TextView
                 android:id="@+id/tvBMIText"
-                style="@style/WhiteText"
+                style="@style/GreyBlackText"
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/BMI_text"
                 android:textAlignment="center"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/tvHeightText"
                 app:layout_constraintStart_toEndOf="@+id/tvAgeText"
-                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+                app:layout_constraintTop_toBottomOf="@+id/tvStatsText" />
 
             <TextView
                 android:id="@+id/tvHeightText"
-                style="@style/WhiteText"
+                style="@style/GreyBlackText"
                 android:layout_width="101dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/height_cm_text"
                 android:textAlignment="center"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/tvWeightText"
                 app:layout_constraintStart_toEndOf="@+id/tvBMIText"
-                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+                app:layout_constraintTop_toBottomOf="@+id/tvStatsText" />
 
             <TextView
                 android:id="@+id/tvWeightText"
-                style="@style/WhiteText"
+                style="@style/GreyBlackText"
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/weight_kg_text"
                 android:textAlignment="center"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvHeightText"
-                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+                app:layout_constraintTop_toBottomOf="@+id/tvStatsText" />
 
             <TextView
                 android:id="@+id/tvAge"
                 style="@style/WhiteText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/no_value_text"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/tvAgeText"
                 app:layout_constraintEnd_toEndOf="@+id/tvAgeText"
                 app:layout_constraintStart_toStartOf="@+id/tvAgeText" />
@@ -120,8 +135,9 @@
                 style="@style/WhiteText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/no_value_text"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/tvBMIText"
                 app:layout_constraintEnd_toEndOf="@+id/tvBMIText"
                 app:layout_constraintStart_toStartOf="@+id/tvBMIText" />
@@ -131,8 +147,9 @@
                 style="@style/WhiteText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/no_value_text"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/tvHeightText"
                 app:layout_constraintEnd_toEndOf="@+id/tvHeightText"
                 app:layout_constraintStart_toStartOf="@+id/tvHeightText" />
@@ -142,8 +159,9 @@
                 style="@style/WhiteText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/no_value_text"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/tvWeightText"
                 app:layout_constraintEnd_toEndOf="@+id/tvWeightText"
                 app:layout_constraintStart_toStartOf="@+id/tvWeightText" />
@@ -157,7 +175,175 @@
                 android:background="@drawable/ic_baseline_settings_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvGoalText"
+                style="@style/GreyBlackText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/goal_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeightText" />
+
+            <TextView
+                android:id="@+id/tvGoal"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGoalText" />
+
+            <TextView
+                android:id="@+id/tvCaloriesText"
+                style="@style/GreyBlackText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/calorie_information_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGoal" />
+
+            <TextView
+                android:id="@+id/tvBmrText"
+                style="@style/GreyBlackText"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/bmr_text"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/tvMaintenanceText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCaloriesText" />
+
+            <TextView
+                android:id="@+id/tvMaintenanceText"
+                style="@style/GreyBlackText"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/maintenance_text"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/tvGoalCaloriesText"
+                app:layout_constraintStart_toEndOf="@+id/tvBmrText"
+                app:layout_constraintTop_toBottomOf="@+id/tvCaloriesText" />
+
+            <TextView
+                android:id="@+id/tvGoalCaloriesText"
+                style="@style/GreyBlackText"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/goal_calories_text"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvMaintenanceText"
+                app:layout_constraintTop_toBottomOf="@+id/tvCaloriesText" />
+
+            <TextView
+                android:id="@+id/tvBmr"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/no_value_text"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvBmrText"
+                app:layout_constraintEnd_toEndOf="@+id/tvBmrText"
+                app:layout_constraintStart_toStartOf="@+id/tvBmrText" />
+
+            <TextView
+                android:id="@+id/tvMaintenance"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/no_value_text"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvMaintenanceText"
+                app:layout_constraintEnd_toEndOf="@+id/tvMaintenanceText"
+                app:layout_constraintStart_toStartOf="@+id/tvMaintenanceText" />
+
+            <TextView
+                android:id="@+id/tvGoalCalories"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/no_value_text"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvGoalCaloriesText"
+                app:layout_constraintEnd_toEndOf="@+id/tvGoalCaloriesText"
+                app:layout_constraintStart_toStartOf="@+id/tvGoalCaloriesText" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnFoodTracker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#7FB8E6"
+        android:drawableStart="@drawable/ic_baseline_fastfood_24"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:drawablePadding="8dp"
+        android:drawableTint="#000000"
+        android:gravity="center_vertical"
+        android:text="@string/food_page_button"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvProfile" />
+
+    <Button
+        android:id="@+id/btnSchedule"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#7FB8E6"
+        android:drawableStart="@drawable/ic_baseline_schedule_24"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:drawablePadding="8dp"
+        android:drawableTint="#000000"
+        android:gravity="center_vertical"
+        android:text="@string/schedule_text"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFoodTracker" />
+
+    <Button
+        android:id="@+id/btnCreateWorkout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#7FB8E6"
+        android:drawableStart="@drawable/ic_baseline_create_24"
+        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:drawablePadding="8dp"
+        android:drawableTint="#000000"
+        android:gravity="center_vertical"
+        android:text="@string/create_workouts_text"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSchedule" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

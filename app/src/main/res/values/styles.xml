@@ -26,4 +26,9 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="GreyBlackText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#4C4C4C</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
 </resources>
