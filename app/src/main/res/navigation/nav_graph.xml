@@ -22,4 +22,9 @@
             android:id="@+id/action_settingsProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="com.example.capstoneproject.ui.FoodFragment"
+        android:label="fragment_food"
+        tools:layout="@layout/fragment_food" />
 </navigation>

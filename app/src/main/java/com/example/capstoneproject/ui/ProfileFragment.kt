@@ -25,11 +25,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        handleButtons()
+
+        observeProfile()
+    }
+
+    private fun handleButtons() {
         btnProfileSettings.setOnClickListener {
             findNavController().navigate(R.id.settingsProfileFragment)
         }
 
-        observeProfile()
+        btnFoodTracker.setOnClickListener {
+            findNavController().navigate(R.id.foodFragment)
+        }
     }
 
     // observes profile data in view model
