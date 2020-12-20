@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.capstoneproject.Constants
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_settings_profile.*
 import java.util.*
 
 class SettingsProfileFragment : Fragment(R.layout.fragment_settings_profile) {
-    private val viewModel: FitnessViewModel by viewModels()
+    private val viewModel: FitnessViewModel by activityViewModels()
 
     private lateinit var genderSelection: String
     private lateinit var activitySelection: String

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -12,21 +13,18 @@ import com.example.capstoneproject.R
 import com.example.capstoneproject.model.Profile
 import com.example.capstoneproject.viewmodel.FitnessViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlin.math.pow
 import kotlin.math.roundToInt
-import kotlin.math.sqrt
 
 const val caloriesInKg = 7700
 const val daysInMonth = 30
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
-    private val viewModel: FitnessViewModel by viewModels()
+    private val viewModel: FitnessViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         handleButtons()
-
         observeProfile()
     }
 
@@ -55,6 +53,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val bmr = calculateBMR(profile)
         val caloriesMaintenance = calculateCaloriesMaintenance(profile, bmr)
         val caloriesGoal = calculateCaloriesGoal(profile, caloriesMaintenance)
+        viewModel.setGoalCalories(caloriesGoal)
 
         tvAge.text = profile.age.toString()
         tvHeight.text = profile.height.toString()

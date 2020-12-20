@@ -20,6 +20,10 @@ class FitnessViewModel(application: Application) : AndroidViewModel(application)
 
     val profile : LiveData<Profile?> = fitnessRepository.getProfile()
 
+    private val _goalCalories: MutableLiveData<Int> = MutableLiveData()
+    val goalCalories: LiveData<Int>
+        get() = _goalCalories
+
     fun insertProfile(profile: Profile) {
         ioScope.launch {
             fitnessRepository.insertProfile(profile)
@@ -42,6 +46,10 @@ class FitnessViewModel(application: Application) : AndroidViewModel(application)
         ioScope.launch {
             fitnessRepository.updateProfile(newProfile)
         }
+    }
+
+    fun setGoalCalories(calories: Int) {
+        _goalCalories.value = calories
     }
 
     fun deleteProfile() {

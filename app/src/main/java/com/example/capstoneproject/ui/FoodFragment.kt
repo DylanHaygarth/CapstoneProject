@@ -3,12 +3,14 @@ package com.example.capstoneproject.ui
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.example.capstoneproject.R
+import com.example.capstoneproject.viewmodel.FitnessViewModel
 import kotlinx.android.synthetic.main.fragment_food.*
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -17,6 +19,7 @@ import java.util.*
 
 
 class FoodFragment : Fragment(R.layout.fragment_food) {
+    private val viewModel: FitnessViewModel by activityViewModels()
     private val dayButtons: Array<Button> by lazy { arrayOf(btnMonday, btnTuesday, btnWednesday, btnThursday, btnFriday, btnSaturday, btnSunday) }
 
     private var lastSelectedDay = -1
@@ -25,7 +28,37 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observeGoalCalories()
+        initUI()
         manageSelectedDay()
+    }
+
+    private fun observeGoalCalories() {
+        viewModel.goalCalories.observe(viewLifecycleOwner, Observer {
+            tvGoalCalories.text = getString(R.string.goal_food_page, it.toString())
+        })
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun initUI() {
+        val calendar: Calendar = Calendar.getInstance()
+
+        when (calendar.get(Calendar.DAY_OF_WEEK)) {
+            Calendar.MONDAY -> { initButton(btnMonday, 0) }
+            Calendar.TUESDAY -> { initButton(btnTuesday, 1) }
+            Calendar.WEDNESDAY -> { initButton(btnWednesday, 2) }
+            Calendar.THURSDAY -> { initButton(btnThursday, 3) }
+            Calendar.FRIDAY -> { initButton(btnFriday, 4) }
+            Calendar.SATURDAY -> { initButton(btnSaturday, 5) }
+            Calendar.SUNDAY -> { initButton(btnSunday, 6) }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun initButton(button: Button, selectedDay: Int) {
+        setDate(button)
+        button.background = resources.getDrawable(R.drawable.day_button_selected_border)
+        lastSelectedDay = selectedDay
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -35,7 +68,7 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
             dayButtons[i].setOnClickListener {
                 dayButtons[i].background = resources.getDrawable(R.drawable.day_button_selected_border)
 
-                if (lastSelectedDay != -1 && i != lastSelectedDay) { dayButtons[lastSelectedDay].background = resources.getDrawable(R.drawable.day_button_border) }
+                if (i != lastSelectedDay) { dayButtons[lastSelectedDay].background = resources.getDrawable(R.drawable.day_button_border) }
                 lastSelectedDay = i
 
                 setDate(dayButtons[i])
