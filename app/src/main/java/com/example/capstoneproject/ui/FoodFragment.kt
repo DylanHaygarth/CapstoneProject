@@ -9,6 +9,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.capstoneproject.R
 import com.example.capstoneproject.viewmodel.FitnessViewModel
 import kotlinx.android.synthetic.main.fragment_food.*
@@ -31,12 +32,19 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
         observeGoalCalories()
         initUI()
         manageSelectedDay()
+        fabClick()
     }
 
     private fun observeGoalCalories() {
         viewModel.goalCalories.observe(viewLifecycleOwner, Observer {
             tvGoalCalories.text = getString(R.string.goal_food_page, it.toString())
         })
+    }
+
+    private fun fabClick() {
+        fabAddFood.setOnClickListener {
+            findNavController().navigate(R.id.addFoodFragment)
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
