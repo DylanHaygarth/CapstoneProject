@@ -14,6 +14,7 @@ import com.example.capstoneproject.model.Profile
 import com.example.capstoneproject.viewmodel.FitnessViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlin.math.roundToInt
+import android.util.Log
 
 const val caloriesInKg = 7700
 const val daysInMonth = 30
@@ -72,18 +73,24 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     // calculates bmi
     private fun calculateBMI(profile: Profile) : Int {
-        val height = profile.height * 0.01
-        return (profile.weight / (height * height)).roundToInt()
+        return if (profile.weight != 0 && profile.height != 0) {
+            val height = profile.height * 0.01
+            (profile.weight / (height * height)).roundToInt()
+        } else {
+            0
+        }
     }
 
     // calculates basic metabolic rate
     private fun calculateBMR(profile: Profile) : Int {
         var bmr = 0
 
-        bmr = if (profile.gender == Constants.GENDERS[0]) {
-            (10 * profile.weight + 6.25 * profile.height - 5 * profile.age + 5).toInt()
-        } else {
-            (10 * profile.weight + 6.25 * profile.height - 5 * profile.age - 161).toInt()
+        if (profile.weight != 0 && profile.height != 0 && profile.age != 0) {
+            bmr = if (profile.gender == Constants.GENDERS[0]) {
+                (10 * profile.weight + 6.25 * profile.height - 5 * profile.age + 5).toInt()
+            } else {
+                (10 * profile.weight + 6.25 * profile.height - 5 * profile.age - 161).toInt()
+            }
         }
 
         return bmr
@@ -106,6 +113,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     // calculates calories needed to reach current goal
     private fun calculateCaloriesGoal(profile: Profile, maintenance: Int) : Int {
-        return (maintenance + (caloriesInKg * profile.goalWeight) / (profile.goalTime * daysInMonth))
+        return if (profile.goalWeight != 0 && profile.goalTime != 0) {
+            (maintenance + (caloriesInKg * profile.goalWeight) / (profile.goalTime * daysInMonth))
+        } else {
+            0
+        }
     }
 }

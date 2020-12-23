@@ -1,31 +1,20 @@
 package com.example.capstoneproject.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.R
 import com.example.capstoneproject.model.EatenFood
-import com.example.capstoneproject.model.FoodItem
 import kotlinx.android.synthetic.main.item_food.view.*
-import java.text.SimpleDateFormat
-import java.util.*
 
-class AddFoodAdapter(private val foods: List<FoodItem>, private val onClick: (FoodItem) -> Unit) : RecyclerView.Adapter<AddFoodAdapter.ViewHolder>(){
+class FoodAdapter(private val foods: List<EatenFood>) : RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
     private lateinit var context: Context
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        init {
-            itemView.foodItem.setOnClickListener {
-                onClick(foods[adapterPosition])
-            }
-        }
-
-        fun bind(food: FoodItem) {
-            itemView.tvFoodName.text = food.itemName
+        fun bind(food: EatenFood) {
+            itemView.tvFoodName.text = food.name
             itemView.tvCalories.text = food.calories.toString()
         }
     }

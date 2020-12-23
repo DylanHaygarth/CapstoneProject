@@ -7,14 +7,17 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.capstoneproject.dao.FitnessDao
+import com.example.capstoneproject.dao.FoodDao
+import com.example.capstoneproject.model.EatenFood
 import com.example.capstoneproject.model.Profile
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Profile::class], version = 1, exportSchema = false)
+@Database(entities = [Profile::class, EatenFood::class], version = 2, exportSchema = false)
 abstract class FitnessRoomDatabase : RoomDatabase() {
     abstract fun fitnessDao(): FitnessDao
+    abstract fun foodDao(): FoodDao
 
     companion object {
         private const val DATABASE_NAME = "FITNESS_DATABASE"

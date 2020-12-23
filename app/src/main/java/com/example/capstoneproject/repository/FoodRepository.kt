@@ -10,10 +10,9 @@ import kotlinx.coroutines.withTimeout
 class FoodRepository {
     private val foodApiService: FoodApiService = FoodApi.createApi()
 
-    private val _foods: MutableLiveData<List<FoodItem>> = MutableLiveData()
-
-    val foods: LiveData<List<FoodItem>>
-        get() = _foods
+    private val _searchedFoods: MutableLiveData<List<FoodItem>> = MutableLiveData()
+    val searchedFoods: LiveData<List<FoodItem>>
+        get() = _searchedFoods
 
     suspend fun getFoods(searchText: String, key: String, host: String) {
         try {
@@ -27,7 +26,7 @@ class FoodRepository {
                 foods.add(result.results[i].foodItem)
             }
 
-            _foods.value = foods
+            _searchedFoods.value = foods
         } catch (error: Throwable) {
         }
     }

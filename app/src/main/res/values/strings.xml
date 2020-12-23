@@ -46,5 +46,6 @@
     <string name="name_text">Name</string>
     <string name="calories_text">Calories</string>
     <string name="add_food_text">You added \"%1$s\" to your daily log.</string>
+    <string name="back_to_foodpage_text">Back to foodtracker</string>
 </resources>
 
