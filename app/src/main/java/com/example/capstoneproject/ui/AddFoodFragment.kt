@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.capstoneproject.Constants
 import com.example.capstoneproject.R
 import com.example.capstoneproject.adapter.AddFoodAdapter
 import com.example.capstoneproject.model.EatenFood
@@ -31,8 +32,6 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
 
     private val viewModel: FoodViewModel by activityViewModels()
 
-    private var searchText = ""
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -47,7 +46,7 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
         rvFoodChoices.adapter = addFoodAdapter
         rvFoodChoices.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
 
-        btnBack.setOnClickListener {
+        btnBackFoodTracker.setOnClickListener {
             findNavController().navigate(R.id.foodFragment)
         }
     }
@@ -58,7 +57,7 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
 
         val dayOfTheWeek: String = SimpleDateFormat("EEEE").format(Date())
 
-        val newFood = EatenFood(food.itemName, food.calories, food.fats, food.carbohydrates, food.proteins, "Thursday")
+        val newFood = EatenFood(food.itemName, food.calories, food.fats, food.carbohydrates, food.proteins, dayOfTheWeek)
         viewModel.insertFood(newFood)
     }
 
@@ -71,6 +70,8 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
     }
 
     private fun getFoods() {
+        var searchText = ""
+
         svFood.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextChange(query: String): Boolean {
                 // converts to lowercase to ensure capital letters do not matter
@@ -84,7 +85,7 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
 
         btnFood.setOnClickListener {
             if (searchText.isNotEmpty()) {
-                viewModel.getSearchedFoods(searchText, "1bee5def6cmsh02dc711dff052c8p1d2ce6jsnd2e173d01f30", "nutritionix-api.p.rapidapi.com")
+                viewModel.getSearchedFoods(searchText, Constants.API_KEY, Constants.API_HOST)
             }
         }
     }

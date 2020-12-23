@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/tvFoodName"
         style="@style/BlackText"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"

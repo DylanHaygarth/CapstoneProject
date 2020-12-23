@@ -32,4 +32,16 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
             eatenFoodRepository.insertFood(eatenFood)
         }
     }
+
+    fun deleteFood(eatenFood: EatenFood) {
+        viewModelScope.launch {
+            eatenFoodRepository.deleteFood(eatenFood)
+        }
+    }
+
+    fun deleteAllFoods() {
+        viewModelScope.launch {
+            eatenFoodRepository.deleteAll()
+        }
+    }
 }

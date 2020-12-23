@@ -40,12 +40,14 @@
     <string name="w_text">W</string>
     <string name="f_text">F</string>
     <string name="s_text">S</string>
-    <string name="goal_food_page">Goal: %1$s</string>
+    <string name="goal_food_page">Calories: %1$d of %2$d</string>
     <string name="search_food_text">Search for any food...</string>
     <string name="search_text">Search</string>
     <string name="name_text">Name</string>
     <string name="calories_text">Calories</string>
     <string name="add_food_text">You added \"%1$s\" to your daily log.</string>
     <string name="back_to_foodpage_text">Back to foodtracker</string>
+    <string name="add_food_explain_text">Click on one of the foods to add it to the food tracker.</string>
+    <string name="back_text">Back</string>
 </resources>
 

@@ -17,4 +17,7 @@ interface FoodDao {
 
     @Delete
     suspend fun deleteFood(eatenFood: EatenFood)
+
+    @Query("DELETE FROM weeklyFoods")
+    suspend fun deleteAll()
 }

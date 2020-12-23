@@ -3,6 +3,7 @@ package com.example.capstoneproject.ui
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
 import androidx.annotation.RequiresApi
@@ -21,12 +22,15 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 import android.util.Log
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.adapter.AddFoodAdapter
 import com.example.capstoneproject.adapter.FoodAdapter
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_add_food.*
 import java.text.SimpleDateFormat
+import kotlin.math.roundToInt
 
 
 class FoodFragment : Fragment(R.layout.fragment_food) {
@@ -38,6 +42,7 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
     private val foodList = arrayListOf<EatenFood>()
     private val foodListByDay = arrayListOf<EatenFood>()
     private var lastSelectedDay = -1
+    private var calorieGoal = 0
 
     private val foodAdapter = FoodAdapter(foodListByDay)
 
@@ -55,7 +60,7 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
     // observes the calorie goal of the user
     private fun observeGoalCalories() {
         fitnessViewModel.goalCalories.observe(viewLifecycleOwner, Observer {
-            tvGoalCalories.text = getString(R.string.goal_food_page, it.toString())
+            calorieGoal = it
         })
     }
 
@@ -69,6 +74,17 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
         })
     }
 
+    // calculates total calories consumed that day
+    private fun calculateCalorieTotal() : Int {
+        var calories = 0.0
+
+        for (i in foodListByDay.indices) {
+            calories += foodListByDay[i].calories
+        }
+
+        return calories.roundToInt()
+    }
+
     // add foods to list based on selected day
     @SuppressLint("SimpleDateFormat")
     private fun addFoodsToDay(day: String) {
@@ -80,6 +96,9 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
             }
         }
         foodAdapter.notifyDataSetChanged()
+
+        // sets text for total calories and calories goal
+        tvGoalCalories.text = getString(R.string.goal_food_page, calculateCalorieTotal(), calorieGoal)
     }
 
     private fun fabClick() {
@@ -94,6 +113,23 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
         rvFoodList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         rvFoodList.adapter = foodAdapter
         rvFoodList.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+
+        // adding item touch helper
+        createItemTouchHelper().attachToRecyclerView(rvFoodList)
+
+        btnBackFoodPage.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
+        }
+
+        btnClear.setOnClickListener {
+            foodViewModel.deleteAllFoods()
+
+            btnClear.setBackgroundResource(R.drawable.ic_baseline_delete_red_24)
+
+            Handler().postDelayed({
+                btnClear.setBackgroundResource(R.drawable.ic_baseline_delete_24)
+            }, 200)
+        }
 
         val calendar: Calendar = Calendar.getInstance()
 
@@ -168,5 +204,31 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
         }
 
         return day
+    }
+
+    private fun createItemTouchHelper(): ItemTouchHelper {
+        val callback = object : ItemTouchHelper.SimpleCallback(0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+
+            // Enables or Disables the ability to move items up and down.
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            // Callback triggered when a user swiped an item.
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+
+                // deletes the swiped food
+                if (direction == ItemTouchHelper.RIGHT || direction == ItemTouchHelper.LEFT) {
+                    foodViewModel.deleteFood(foodList[position])
+                }
+            }
+        }
+        return ItemTouchHelper(callback)
     }
 }

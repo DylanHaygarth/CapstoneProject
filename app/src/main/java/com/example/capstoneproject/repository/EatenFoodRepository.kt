@@ -28,4 +28,8 @@ class EatenFoodRepository(context: Context) {
     suspend fun deleteFood(eatenFood: EatenFood) {
         foodDao.deleteFood(eatenFood)
     }
+
+    suspend fun deleteAll() {
+        foodDao.deleteAll()
+    }
 }
