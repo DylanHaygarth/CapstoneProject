@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/searchview_border"
         app:iconifiedByDefault="false"
@@ -26,11 +26,11 @@
         android:id="@+id/btnFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
         android:text="@string/search_text"
+        app:layout_constraintBottom_toBottomOf="@+id/svFood"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/svFood" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFoodChoices"
@@ -88,5 +88,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/svFood" />
+
+    <TextView
+        android:id="@+id/tvAddText"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/add_to_text"
+        app:layout_constraintBottom_toTopOf="@+id/svFood"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerDay"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/spinner_background"
+        android:gravity="end"
+        android:overlapAnchor="false"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAddText"
+        app:layout_constraintStart_toEndOf="@+id/tvAddText"
+        app:layout_constraintTop_toTopOf="@+id/tvAddText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

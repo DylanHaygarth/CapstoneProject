@@ -7,12 +7,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.R
 import com.example.capstoneproject.model.EatenFood
+import com.example.capstoneproject.model.FoodItem
 import kotlinx.android.synthetic.main.item_food.view.*
 
-class FoodAdapter(private val foods: List<EatenFood>) : RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
+class FoodAdapter(private val foods: List<EatenFood>, private val onClick: (EatenFood) -> Unit) : RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
     private lateinit var context: Context
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.btnInfo.setOnClickListener {
+                onClick(foods[adapterPosition])
+            }
+        }
+
         fun bind(food: EatenFood) {
             itemView.tvFoodName.text = food.name
             itemView.tvCalories.text = food.calories.toString()

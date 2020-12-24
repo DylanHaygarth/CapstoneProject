@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -20,6 +22,7 @@ import com.example.capstoneproject.model.FoodItem
 import com.example.capstoneproject.viewmodel.FoodViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_add_food.*
+import kotlinx.android.synthetic.main.fragment_settings_profile.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,6 +34,8 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
     private val addFoodAdapter = AddFoodAdapter(foods, ::onFoodClick)
 
     private val viewModel: FoodViewModel by activityViewModels()
+
+    private var selectedDay = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,18 +51,54 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
         rvFoodChoices.adapter = addFoodAdapter
         rvFoodChoices.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
 
+        setSpinner()
+
         btnBackFoodTracker.setOnClickListener {
             findNavController().navigate(R.id.foodFragment)
         }
     }
 
     @SuppressLint("SimpleDateFormat")
+    private fun setSpinner() {
+        val days = Constants.DAYS.clone()
+        val dayOfTheWeek: String = SimpleDateFormat("EEEE").format(Date())
+
+        // changed current day into 'today' in spinner item list
+        for (i in days.indices) {
+            if (days[i] == dayOfTheWeek) {
+                days[i] = getString(R.string.today_text)
+            }
+        }
+
+        // set up spinner item
+        val adapterOptions: ArrayAdapter<String> = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, days)
+        adapterOptions.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerDay.adapter = adapterOptions
+
+        // sets spinner selection to today
+        spinnerDay.setSelection(days.indexOf(getString(R.string.today_text)))
+
+        spinnerDay.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selection = parent?.getItemAtPosition(position).toString()
+
+                selectedDay = if (selection == getString(R.string.today_text)) {
+                    dayOfTheWeek
+                } else {
+                    selection
+                }
+            }
+        }
+    }
+
+    // adds foods to food tracker
+    @SuppressLint("SimpleDateFormat")
     private fun onFoodClick(food: FoodItem) {
         Toast.makeText(requireContext(), getString(R.string.add_food_text, food.itemName), Toast.LENGTH_SHORT).show()
 
-        val dayOfTheWeek: String = SimpleDateFormat("EEEE").format(Date())
-
-        val newFood = EatenFood(food.itemName, food.calories, food.fats, food.carbohydrates, food.proteins, dayOfTheWeek)
+        val newFood = EatenFood(food.itemName, food.calories, food.fats, food.carbohydrates, food.proteins, selectedDay)
         viewModel.insertFood(newFood)
     }
 
@@ -69,6 +110,7 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
         })
     }
 
+    // gets food based on searched query
     private fun getFoods() {
         var searchText = ""
 

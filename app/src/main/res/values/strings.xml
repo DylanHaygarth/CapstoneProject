@@ -49,5 +49,10 @@
     <string name="back_to_foodpage_text">Back to foodtracker</string>
     <string name="add_food_explain_text">Click on one of the foods to add it to the food tracker.</string>
     <string name="back_text">Back</string>
+    <string name="fats_text">Fats</string>
+    <string name="protein_text">Protein</string>
+    <string name="carbs_text">Carbohydrates</string>
+    <string name="add_to_text">Add to:</string>
+    <string name="today_text">Today</string>
 </resources>
 

@@ -2,7 +2,9 @@ package com.example.capstoneproject.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -34,7 +36,7 @@ class AddFoodAdapter(private val foods: List<FoodItem>, private val onClick: (Fo
         context = parent.context
 
         return ViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.item_food, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.item_food_add, parent, false)
         )
     }
 

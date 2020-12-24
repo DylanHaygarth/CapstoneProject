@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.capstoneproject.Constants
 import com.example.capstoneproject.adapter.AddFoodAdapter
 import com.example.capstoneproject.adapter.FoodAdapter
 import com.google.android.material.snackbar.Snackbar
@@ -44,7 +45,8 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
     private var lastSelectedDay = -1
     private var calorieGoal = 0
 
-    private val foodAdapter = FoodAdapter(foodListByDay)
+    private val foodAdapter = FoodAdapter(foodListByDay, ::onInfoClick)
+    private val bottomSheetInfo = FoodBottomSheetFragment()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,6 +74,11 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
             foodList.addAll(it)
             addFoodsToDay(SimpleDateFormat("EEEE").format(Date()))
         })
+    }
+
+    private fun onInfoClick(food: EatenFood) {
+        bottomSheetInfo.show(requireActivity().supportFragmentManager, "bottomSheetNutrition")
+        foodViewModel.setCurrentFood(food)
     }
 
     // calculates total calories consumed that day
@@ -121,6 +128,7 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
             findNavController().navigate(R.id.profileFragment)
         }
 
+        // button to delete all foods with little animation
         btnClear.setOnClickListener {
             foodViewModel.deleteAllFoods()
 
@@ -194,13 +202,13 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
         var day = ""
 
         when (button) {
-            dayButtons[0] -> day = "Monday"
-            dayButtons[1] -> day = "Tuesday"
-            dayButtons[2] -> day = "Wednesday"
-            dayButtons[3] -> day = "Thursday"
-            dayButtons[4] -> day = "Friday"
-            dayButtons[5] -> day = "Saturday"
-            dayButtons[6] -> day = "Sunday"
+            dayButtons[0] -> day = Constants.DAYS[0]
+            dayButtons[1] -> day = Constants.DAYS[1]
+            dayButtons[2] -> day = Constants.DAYS[2]
+            dayButtons[3] -> day = Constants.DAYS[3]
+            dayButtons[4] -> day = Constants.DAYS[4]
+            dayButtons[5] -> day = Constants.DAYS[5]
+            dayButtons[6] -> day = Constants.DAYS[6]
         }
 
         return day

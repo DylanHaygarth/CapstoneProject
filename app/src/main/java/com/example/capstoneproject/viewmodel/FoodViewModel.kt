@@ -21,6 +21,10 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
     val searchedFoods: LiveData<List<FoodItem>> = foodRepository.searchedFoods
     val eatenFoods: LiveData<List<EatenFood>> = eatenFoodRepository.getAllFoods()
 
+    private val _selectedFood: MutableLiveData<EatenFood> = MutableLiveData()
+    val selectedFood: LiveData<EatenFood>
+        get() = _selectedFood
+
     fun getSearchedFoods(searchText: String, key: String, host: String) {
         viewModelScope.launch {
             foodRepository.getFoods(searchText, key, host)
@@ -43,5 +47,9 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             eatenFoodRepository.deleteAll()
         }
+    }
+
+    fun setCurrentFood(food: EatenFood) {
+        _selectedFood.value = food
     }
 }
