@@ -21,7 +21,9 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout) {
     private val workoutViewModel: WorkoutViewModel by activityViewModels()
 
     private val workouts = arrayListOf<Workout>()
-    private val workoutAdapter = WorkoutAdapter(workouts)
+    private val workoutAdapter = WorkoutAdapter(workouts, ::onClickWorkout)
+
+    private val bottomSheetInfo = WorkoutBottomSheetFragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,6 +56,11 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout) {
             workouts.addAll(it)
             workoutAdapter.notifyDataSetChanged()
         })
+    }
+
+    private fun onClickWorkout (workout: Workout) {
+        bottomSheetInfo.show(requireActivity().supportFragmentManager, "bottomSheetExercises")
+        workoutViewModel.addClickedExercises(workout.exercises)
     }
 
     private fun createItemTouchHelper(): ItemTouchHelper {

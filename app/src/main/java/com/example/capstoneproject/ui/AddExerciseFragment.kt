@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.capstoneproject.R
@@ -28,8 +29,10 @@ class AddExerciseFragment : Fragment(R.layout.fragment_add_exercise) {
         }
 
         btnAddExercise.setOnClickListener {
-            onAddExercise()
-            findNavController().navigate(R.id.addWorkoutFragment)
+            if (validateAddExercise()) {
+                onAddExercise()
+                findNavController().navigate(R.id.addWorkoutFragment)
+            }
         }
     }
 
@@ -43,5 +46,14 @@ class AddExerciseFragment : Fragment(R.layout.fragment_add_exercise) {
         val exercise = Exercise(name, sets, reps, restTime, weight)
 
         workoutViewModel.addExerciseToSelectedExercises(exercise)
+    }
+
+    private fun validateAddExercise() : Boolean {
+        return if (etName.text.isNotEmpty() && etSets.text.isNotEmpty() && etReps.text.isNotEmpty() && etRestTime.text.isNotEmpty() && etWeight.text.isNotEmpty()) {
+            true
+        } else {
+            Toast.makeText(requireContext(), getString(R.string.add_exercise_warning), Toast.LENGTH_LONG).show()
+            false
+        }
     }
 }

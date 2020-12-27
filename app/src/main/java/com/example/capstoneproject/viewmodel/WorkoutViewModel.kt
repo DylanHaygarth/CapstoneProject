@@ -22,6 +22,11 @@ class WorkoutViewModel(application: Application) : AndroidViewModel(application)
         get() = _selectedExercises
     private val selectedExercisesTracker = arrayListOf<Exercise>()
 
+    private val _clickedExercises: MutableLiveData<ArrayList<Exercise>> = MutableLiveData()
+    val clickedExercises: LiveData<ArrayList<Exercise>>
+        get() = _clickedExercises
+    private val clickedExercisesTracker = arrayListOf<Exercise>()
+
     private val _workoutName: MutableLiveData<String> = MutableLiveData()
     val workoutName: LiveData<String>
         get() = _workoutName
@@ -55,7 +60,22 @@ class WorkoutViewModel(application: Application) : AndroidViewModel(application)
         _selectedExercises.value = selectedExercisesTracker
     }
 
+    fun removeSelectedExercises() {
+        selectedExercisesTracker.clear()
+        _selectedExercises.value = selectedExercisesTracker
+    }
+
     fun setWorkoutName(name: String) {
         _workoutName.value = name
+    }
+
+    fun removeWorkoutName() {
+        _workoutName.value = ""
+    }
+
+    fun addClickedExercises(exercises: List<Exercise>) {
+        clickedExercisesTracker.clear()
+        clickedExercisesTracker.addAll(exercises)
+        _clickedExercises.value = clickedExercisesTracker
     }
 }

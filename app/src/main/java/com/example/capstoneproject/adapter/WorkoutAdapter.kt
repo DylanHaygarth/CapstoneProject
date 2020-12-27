@@ -8,15 +8,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.R
 import com.example.capstoneproject.model.Exercise
+import com.example.capstoneproject.model.FoodItem
 import com.example.capstoneproject.model.Workout
 import kotlinx.android.synthetic.main.item_exercise.view.*
 import kotlinx.android.synthetic.main.item_exercise.view.tvName
+import kotlinx.android.synthetic.main.item_food.view.*
 import kotlinx.android.synthetic.main.item_workout.view.*
 
-class WorkoutAdapter(private val workouts: List<Workout>) : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>(){
+class WorkoutAdapter(private val workouts: List<Workout>, private val onClick: (Workout) -> Unit) : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>(){
     private lateinit var context: Context
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.itemWorkout.setOnClickListener {
+                onClick(workouts[adapterPosition])
+            }
+        }
+
         @SuppressLint("SetTextI18n")
         fun bind(workout: Workout) {
             itemView.tvWorkoutName.text = workout.name
@@ -26,7 +34,7 @@ class WorkoutAdapter(private val workouts: List<Workout>) : RecyclerView.Adapter
                 duration += workout.exercises[i].sets
                 duration += workout.exercises[i].restTime
             }
-            itemView.tvDuration.text = duration.toString() + " min"
+            itemView.tvDuration.text = "$duration min"
             itemView.tvExercises.text = workout.exercises.size.toString()
         }
     }

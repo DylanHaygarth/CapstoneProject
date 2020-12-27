@@ -1,9 +1,11 @@
 package com.example.capstoneproject.ui
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -42,8 +44,10 @@ class AddWorkoutFragment : Fragment(R.layout.fragment_add_workout) {
         }
 
         btnFinishTraining.setOnClickListener {
-            onAddWorkout()
-            findNavController().navigate(R.id.workoutFragment)
+            if (validateFinish()) {
+                onAddWorkout()
+                findNavController().navigate(R.id.workoutFragment)
+            }
         }
 
         btnAddExercise.setOnClickListener {
@@ -68,5 +72,20 @@ class AddWorkoutFragment : Fragment(R.layout.fragment_add_workout) {
 
     private fun onAddWorkout() {
         workoutViewModel.insertWorkout(Workout(etName.text.toString(), exercises))
+
+        // refreshes the selected exercises and workout name
+        Handler().postDelayed({
+            workoutViewModel.removeSelectedExercises()
+            workoutViewModel.removeWorkoutName()
+        }, 500)
+    }
+
+    private fun validateFinish() : Boolean {
+        return if (etName.text.isNotEmpty() && exercises.size != 0) {
+            true
+        } else {
+            Toast.makeText(requireContext(), getString(R.string.add_workout_warning), Toast.LENGTH_LONG).show()
+            false
+        }
     }
 }

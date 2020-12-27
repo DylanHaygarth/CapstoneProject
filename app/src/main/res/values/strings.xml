@@ -64,5 +64,7 @@
     <string name="minutes_text">min</string>
     <string name="duration_text">Duration</string>
     <string name="exercises_text">Exercises</string>
+    <string name="add_workout_warning">Enter a name and add at least one exercise.</string>
+    <string name="add_exercise_warning">Fill in all the fields.</string>
 </resources>
 
