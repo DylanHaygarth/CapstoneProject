@@ -62,5 +62,7 @@
     <string name="reps_text">Reps</string>
     <string name="rest_time_text">Rest time</string>
     <string name="minutes_text">min</string>
+    <string name="duration_text">Duration</string>
+    <string name="exercises_text">Exercises</string>
 </resources>
 

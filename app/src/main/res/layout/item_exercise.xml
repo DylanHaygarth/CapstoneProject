@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvNameTitle"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/name_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSetsTitle"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/sets_text"
+        app:layout_constraintStart_toEndOf="@+id/tvNameTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRepsTitle"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/reps_text"
+        app:layout_constraintStart_toEndOf="@+id/tvSetsTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRestTimeTitle"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/rest_time_text"
+        app:layout_constraintStart_toEndOf="@+id/tvRepsTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvWeightTItle"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/weight_text"
+        app:layout_constraintStart_toEndOf="@+id/tvRestTimeTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        style="@style/GreyBlackText"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvNameTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvNameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameTitle" />
+
+    <TextView
+        android:id="@+id/tvSets"
+        style="@style/GreyBlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvSetsTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvSetsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvSetsTitle" />
+
+    <TextView
+        android:id="@+id/tvReps"
+        style="@style/GreyBlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvRepsTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvRepsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvRepsTitle" />
+
+    <TextView
+        android:id="@+id/tvRestTime"
+        style="@style/GreyBlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvRestTimeTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvRestTimeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvRestTimeTitle" />
+
+    <TextView
+        android:id="@+id/tvWeight"
+        style="@style/GreyBlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvWeightTItle"
+        app:layout_constraintStart_toStartOf="@+id/tvWeightTItle"
+        app:layout_constraintTop_toBottomOf="@+id/tvWeightTItle" />
+
+    <TextView
+        android:id="@+id/tvNumber"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
