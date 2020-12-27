@@ -54,5 +54,13 @@
     <string name="carbs_text">Carbohydrates</string>
     <string name="add_to_text">Add to:</string>
     <string name="today_text">Today</string>
+    <string name="workouts_text">Your workouts</string>
+    <string name="add_training_text">Add training</string>
+    <string name="add_exercise_text">Add exercise</string>
+    <string name="Finish_text">Finish</string>
+    <string name="sets_text">Sets</string>
+    <string name="reps_text">Reps</string>
+    <string name="rest_time_text">Rest time</string>
+    <string name="minutes_text">min</string>
 </resources>
 

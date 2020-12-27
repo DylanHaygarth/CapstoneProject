@@ -32,4 +32,19 @@
         android:name="com.example.capstoneproject.ui.AddFoodFragment"
         android:label="fragment_add_food"
         tools:layout="@layout/fragment_add_food" />
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="com.example.capstoneproject.ui.WorkoutFragment"
+        android:label="fragment_workout"
+        tools:layout="@layout/fragment_workout" />
+    <fragment
+        android:id="@+id/addWorkoutFragment"
+        android:name="com.example.capstoneproject.ui.AddWorkoutFragment"
+        android:label="fragment_add_workout"
+        tools:layout="@layout/fragment_add_workout" />
+    <fragment
+        android:id="@+id/addExerciseFragment"
+        android:name="com.example.capstoneproject.ui.AddExerciseFragment"
+        android:label="fragment_add_exercise"
+        tools:layout="@layout/fragment_add_exercise" />
 </navigation>

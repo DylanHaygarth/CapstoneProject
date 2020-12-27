@@ -37,6 +37,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         btnFoodTracker.setOnClickListener {
             findNavController().navigate(R.id.foodFragment)
         }
+
+        btnCreateWorkout.setOnClickListener {
+            findNavController().navigate(R.id.workoutFragment)
+        }
     }
 
     // observes profile data in view model
