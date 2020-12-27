@@ -30,6 +30,7 @@ import com.example.capstoneproject.adapter.AddFoodAdapter
 import com.example.capstoneproject.adapter.FoodAdapter
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_add_food.*
+import kotlinx.android.synthetic.main.item_food.view.*
 import java.text.SimpleDateFormat
 import kotlin.math.roundToInt
 
@@ -54,9 +55,8 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
 
         observeGoalCalories()
         observeFoods()
-        initUI()
+        initViews()
         manageSelectedDay()
-        fabClick()
     }
 
     // observes the calorie goal of the user
@@ -72,7 +72,7 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
         foodViewModel.eatenFoods.observe(viewLifecycleOwner, Observer {
             foodList.clear()
             foodList.addAll(it)
-            addFoodsToDay(SimpleDateFormat("EEEE").format(Date()))
+            addFoodsToDay(getDayByButton(dayButtons[lastSelectedDay]))
         })
     }
 
@@ -108,14 +108,9 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
         tvGoalCalories.text = getString(R.string.goal_food_page, calculateCalorieTotal(), calorieGoal)
     }
 
-    private fun fabClick() {
-        fabAddFood.setOnClickListener {
-            findNavController().navigate(R.id.addFoodFragment)
-        }
-    }
-
+    @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun initUI() {
+    private fun initViews() {
         // managing layout of the recycler view
         rvFoodList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         rvFoodList.adapter = foodAdapter
@@ -126,6 +121,10 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
 
         btnBackFoodPage.setOnClickListener {
             findNavController().navigate(R.id.profileFragment)
+        }
+
+        fabAddFood.setOnClickListener {
+            findNavController().navigate(R.id.addFoodFragment)
         }
 
         // button to delete all foods with little animation
@@ -233,7 +232,7 @@ class FoodFragment : Fragment(R.layout.fragment_food) {
 
                 // deletes the swiped food
                 if (direction == ItemTouchHelper.RIGHT || direction == ItemTouchHelper.LEFT) {
-                    foodViewModel.deleteFood(foodList[position])
+                    foodViewModel.deleteFood(foodListByDay[position])
                 }
             }
         }

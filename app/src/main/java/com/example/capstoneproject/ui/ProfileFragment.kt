@@ -38,6 +38,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             findNavController().navigate(R.id.foodFragment)
         }
 
+        btnSchedule.setOnClickListener {
+            findNavController().navigate(R.id.scheduleFragment)
+        }
+
         btnCreateWorkout.setOnClickListener {
             findNavController().navigate(R.id.workoutFragment)
         }
@@ -118,7 +122,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     // calculates calories needed to reach current goal
     private fun calculateCaloriesGoal(profile: Profile, maintenance: Int) : Int {
         return if (profile.goalWeight != 0 && profile.goalTime != 0) {
-            (maintenance + (caloriesInKg * profile.goalWeight) / (profile.goalTime * daysInMonth))
+            if (profile.goalAction == Constants.GOALOPTIONS[0]) {
+                (maintenance + (caloriesInKg * profile.goalWeight) / (profile.goalTime * daysInMonth))
+            } else {
+                (maintenance - (caloriesInKg * profile.goalWeight) / (profile.goalTime * daysInMonth))
+            }
         } else {
             0
         }

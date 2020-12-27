@@ -36,6 +36,7 @@ class AddExerciseFragment : Fragment(R.layout.fragment_add_exercise) {
         }
     }
 
+    // adds exercise to a workout
     private fun onAddExercise() {
         val name = etName.text.toString()
         val sets = etSets.text.toString().toInt()
@@ -48,6 +49,7 @@ class AddExerciseFragment : Fragment(R.layout.fragment_add_exercise) {
         workoutViewModel.addExerciseToSelectedExercises(exercise)
     }
 
+    // checks if all fields are filled in
     private fun validateAddExercise() : Boolean {
         return if (etName.text.isNotEmpty() && etSets.text.isNotEmpty() && etReps.text.isNotEmpty() && etRestTime.text.isNotEmpty() && etWeight.text.isNotEmpty()) {
             true

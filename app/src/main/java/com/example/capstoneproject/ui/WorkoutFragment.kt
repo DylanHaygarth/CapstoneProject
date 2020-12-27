@@ -50,6 +50,7 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout) {
         }
     }
 
+    // observes the workouts added through the 'add workout' page
     private fun observeWorkouts() {
         workoutViewModel.workouts.observe(viewLifecycleOwner, Observer {
             workouts.clear()
@@ -58,6 +59,7 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout) {
         })
     }
 
+    // opens bottom sheet when user clicks on workout
     private fun onClickWorkout (workout: Workout) {
         bottomSheetInfo.show(requireActivity().supportFragmentManager, "bottomSheetExercises")
         workoutViewModel.addClickedExercises(workout.exercises)

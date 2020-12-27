@@ -56,6 +56,7 @@ class AddWorkoutFragment : Fragment(R.layout.fragment_add_workout) {
         }
     }
 
+    // observes the exercises that are added to this fragment
     private fun observeSelectedExercises() {
         workoutViewModel.selectedExercises.observe(viewLifecycleOwner, Observer {
             exercises.clear()
@@ -64,12 +65,14 @@ class AddWorkoutFragment : Fragment(R.layout.fragment_add_workout) {
         })
     }
 
+    // observes the name of the workout that is being created
     private fun observeWorkoutName() {
         workoutViewModel.workoutName.observe(viewLifecycleOwner, Observer {
             etName.setText(it)
         })
     }
 
+    // workout is added to list of workouts
     private fun onAddWorkout() {
         workoutViewModel.insertWorkout(Workout(etName.text.toString(), exercises))
 
@@ -80,6 +83,7 @@ class AddWorkoutFragment : Fragment(R.layout.fragment_add_workout) {
         }, 500)
     }
 
+    // checks if exercises and title are filled in
     private fun validateFinish() : Boolean {
         return if (etName.text.isNotEmpty() && exercises.size != 0) {
             true
