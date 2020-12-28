@@ -66,5 +66,14 @@
     <string name="exercises_text">Exercises</string>
     <string name="add_workout_warning">Enter a name and add at least one exercise.</string>
     <string name="add_exercise_warning">Fill in all the fields.</string>
+    <string name="add_a_workout_text">Add a workout</string>
+    <string name="time_seperator_text">:</string>
+    <string name="day_text">Day</string>
+    <string name="time_text">Starting time</string>
+    <string name="workout_text">Workout</string>
+    <string name="add_text">Add</string>
+    <string name="workout_time">%1$s:%2$s - %3$s:%4$s</string>
+    <string name="duration_schedule_text">%1$d min</string>
+    <string name="schedule_time_check">Enter a valid time.</string>
 </resources>
 

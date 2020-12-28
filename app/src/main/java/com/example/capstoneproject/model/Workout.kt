@@ -12,6 +12,9 @@ data class Workout (
     @ColumnInfo(name = "exercises")
     val exercises: List<Exercise>,
 
+    @ColumnInfo(name = "duration")
+    val duration: Int,
+
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Long? = null

@@ -29,11 +29,11 @@ class WorkoutAdapter(private val workouts: List<Workout>, private val onClick: (
         fun bind(workout: Workout) {
             itemView.tvWorkoutName.text = workout.name
 
-            var duration = 0
-            for (i in workout.exercises.indices) {
-                duration += workout.exercises[i].sets
-                duration += workout.exercises[i].restTime
-            }
+            val duration = workout.duration
+//            for (i in workout.exercises.indices) {
+//                duration += workout.exercises[i].sets
+//                duration += workout.exercises[i].restTime
+//            }
             itemView.tvDuration.text = "$duration min"
             itemView.tvExercises.text = workout.exercises.size.toString()
         }

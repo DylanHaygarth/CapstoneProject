@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AddToScheduleFragment">
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/add_a_workout_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDay"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/day_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/time_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDay" />
+
+    <TextView
+        android:id="@+id/tvWorkout"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/workout_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTime" />
+
+    <Spinner
+        android:id="@+id/spinnerDay"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/spinner_background"
+        android:gravity="end"
+        android:overlapAnchor="false"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDay"
+        app:layout_constraintStart_toEndOf="@+id/tvDay"
+        app:layout_constraintTop_toTopOf="@+id/tvDay" />
+
+    <Spinner
+        android:id="@+id/spinnerWorkout"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/spinner_background"
+        android:gravity="end"
+        android:overlapAnchor="false"
+        app:layout_constraintBottom_toBottomOf="@+id/tvWorkout"
+        app:layout_constraintStart_toEndOf="@+id/tvWorkout"
+        app:layout_constraintTop_toTopOf="@+id/tvWorkout" />
+
+    <EditText
+        android:id="@+id/etTimeHour"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:autofillHints="false"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTime"
+        app:layout_constraintStart_toEndOf="@+id/tvTime"
+        app:layout_constraintTop_toTopOf="@+id/tvTime" />
+
+    <EditText
+        android:id="@+id/etTimeMinute"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:autofillHints="false"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etTimeHour"
+        app:layout_constraintStart_toEndOf="@+id/tvTimeSeperator"
+        app:layout_constraintTop_toTopOf="@+id/etTimeHour" />
+
+    <TextView
+        android:id="@+id/tvTimeSeperator"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/time_seperator_text"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/etTimeHour"
+        app:layout_constraintStart_toEndOf="@+id/etTimeHour"
+        app:layout_constraintTop_toTopOf="@+id/etTimeHour" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="95dp"
+        android:text="@string/add_text"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerWorkout" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="40dp"
+        android:drawableStart="@drawable/ic_baseline_chevron_left_24"
+        android:text="@string/back_text"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerWorkout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

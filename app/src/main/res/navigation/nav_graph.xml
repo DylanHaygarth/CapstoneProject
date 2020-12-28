@@ -52,4 +52,9 @@
         android:name="com.example.capstoneproject.ui.ScheduleFragment"
         android:label="fragment_schedule"
         tools:layout="@layout/fragment_schedule" />
+    <fragment
+        android:id="@+id/addToScheduleFragment"
+        android:name="com.example.capstoneproject.ui.AddToScheduleFragment"
+        android:label="fragment_add_to_schedule"
+        tools:layout="@layout/fragment_add_to_schedule" />
 </navigation>

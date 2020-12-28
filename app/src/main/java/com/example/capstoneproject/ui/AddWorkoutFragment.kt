@@ -74,7 +74,13 @@ class AddWorkoutFragment : Fragment(R.layout.fragment_add_workout) {
 
     // workout is added to list of workouts
     private fun onAddWorkout() {
-        workoutViewModel.insertWorkout(Workout(etName.text.toString(), exercises))
+        var duration = 0
+        for (i in exercises.indices) {
+            duration += exercises[i].sets
+            duration += exercises[i].restTime
+        }
+
+        workoutViewModel.insertWorkout(Workout(etName.text.toString(), exercises, duration))
 
         // refreshes the selected exercises and workout name
         Handler().postDelayed({

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemSchedule"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_schedule_24" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="@+id/ivTime"
+        app:layout_constraintStart_toStartOf="@+id/ivTime"
+        app:layout_constraintTop_toBottomOf="@+id/ivTime" />
+
+    <ImageView
+        android:id="@+id/ivName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvName"
+        app:layout_constraintEnd_toEndOf="@+id/tvName"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:srcCompat="@drawable/ic_baseline_sports_24" />
+
+    <TextView
+        android:id="@+id/tvName"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTime" />
+
+    <ImageView
+        android:id="@+id/ivDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvWorkoutDuration"
+        app:layout_constraintEnd_toEndOf="@+id/tvWorkoutDuration"
+        app:layout_constraintStart_toStartOf="@+id/tvWorkoutDuration"
+        app:srcCompat="@drawable/ic_baseline_timer_24" />
+
+    <TextView
+        android:id="@+id/tvWorkoutDuration"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
