@@ -88,6 +88,7 @@ class ScheduleFragment : Fragment(R.layout.fragment_schedule) {
         }
     }
 
+    // observes the scheduled workouts
     private fun observeWorkouts() {
         scheduleViewModel.scheduledWorkouts.observe(viewLifecycleOwner, Observer {
             scheduledWorkouts.clear()
@@ -96,6 +97,7 @@ class ScheduleFragment : Fragment(R.layout.fragment_schedule) {
         })
     }
 
+    // initializes the day buttons
     @SuppressLint("UseCompatLoadingForDrawables")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initButton(button: Button, selectedDay: Int) {
@@ -103,7 +105,7 @@ class ScheduleFragment : Fragment(R.layout.fragment_schedule) {
         lastSelectedDay = selectedDay
     }
 
-    // keeps track of the selected day, updates list of foods/date accordingly
+    // keeps track of the selected day, updates list of scheduled workouts accordingly
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun manageSelectedDay() {
@@ -119,7 +121,7 @@ class ScheduleFragment : Fragment(R.layout.fragment_schedule) {
         }
     }
 
-    // add foods to list based on selected day
+    // add workout to list based on selected day
     @SuppressLint("SimpleDateFormat")
     private fun addWorkoutsToDay(day: String) {
         scheduledWorkoutsByDay.clear()
@@ -166,7 +168,7 @@ class ScheduleFragment : Fragment(R.layout.fragment_schedule) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
 
-                // deletes the swiped food
+                // deletes the swiped workout
                 if (direction == ItemTouchHelper.RIGHT || direction == ItemTouchHelper.LEFT) {
                     scheduleViewModel.deleteWorkout(scheduledWorkoutsByDay[position])
                 }

@@ -15,14 +15,13 @@ class ExerciseAdapter(private val exercises: List<Exercise>) : RecyclerView.Adap
     private lateinit var context: Context
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        @SuppressLint("SetTextI18n")
         fun bind(exercise: Exercise) {
             itemView.tvName.text = exercise.name
             itemView.tvSets.text = exercise.sets.toString()
             itemView.tvReps.text = exercise.reps.toString()
             itemView.tvRestTime.text = exercise.restTime.toString()
             itemView.tvWeight.text = exercise.weight.toString()
-            itemView.tvNumber.text = (adapterPosition + 1).toString() + "."
+            itemView.tvNumber.text = context.getString(R.string.exercise_number_text, adapterPosition + 1)
         }
     }
 

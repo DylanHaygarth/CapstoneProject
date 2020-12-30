@@ -23,7 +23,7 @@ class FoodApi {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-            // Return the Retrofit MovieAPIService
+            // Return the Retrofit FoodAPIService
             return foodAPI.create(FoodApiService::class.java)
         }
     }

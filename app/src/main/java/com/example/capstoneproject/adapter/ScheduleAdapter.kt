@@ -21,6 +21,7 @@ class ScheduleAdapter(private val workouts: List<ScheduledWorkout>) : RecyclerVi
         fun bind(workout: ScheduledWorkout) {
             itemView.tvName.text = workout.workoutName
 
+            // checks if the duration of the workout is more than following hour, then it will convert minutes to hours
             var endHour = workout.startHour
             var endMin = workout.startMin + workout.duration
             while (endMin >= minInHour) {

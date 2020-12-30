@@ -53,6 +53,7 @@ class AddToScheduleFragment : Fragment(R.layout.fragment_add_to_schedule) {
         setSpinner(spinnerDay, Constants.DAYS.clone())
     }
 
+    // observes currently planned in workouts, adds all workout names to the spinner object
     private fun observeWorkouts() {
         workoutViewModel.workouts.observe(viewLifecycleOwner, Observer {
             workouts.clear()
@@ -91,6 +92,7 @@ class AddToScheduleFragment : Fragment(R.layout.fragment_add_to_schedule) {
         }
     }
 
+    // adds a scheduled workout to room database
     private fun onAddWorkout() {
         val startHour = etTimeHour.text.toString().toInt()
         val startMin = etTimeMinute.text.toString().toInt()
@@ -99,6 +101,7 @@ class AddToScheduleFragment : Fragment(R.layout.fragment_add_to_schedule) {
         scheduleViewModel.insertWorkout(workout)
     }
 
+    // checks if information is filled in properly
     private fun validateAdd() : Boolean {
         return if (etTimeHour.text.isNotEmpty() && etTimeHour.text.toString().toInt() >= 0 && etTimeHour.text.toString().toInt() <= 23 &&
             etTimeMinute.text.isNotEmpty() && etTimeMinute.text.toString().toInt() >= 0 && etTimeMinute.text.toString().toInt() <= 59) {
